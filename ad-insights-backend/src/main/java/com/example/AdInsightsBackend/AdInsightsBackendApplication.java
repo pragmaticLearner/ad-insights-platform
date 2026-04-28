@@ -1,4 +1,4 @@
-package com.example.AdInsightsBackend;
+package com.example.adinsightsbackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class AdInsightsBackendApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AdInsightsBackendApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AdInsightsBackendApplication.class, args);
+    }
 
 }
