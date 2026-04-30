@@ -1,8 +1,8 @@
-import {Text, Heading, Tabs, Box, Image, VStack} from "@chakra-ui/react";
-import Logo from "@/assets/giraffe_logo.jpg";
+import {Text, Heading, Tabs, Box, VStack} from "@chakra-ui/react";
 import {useState} from "react";
 import LoginForm from "@/features/auth/components/LoginForm.tsx";
 import SignUpForm from "@/features/auth/components/SignUpForm.tsx";
+import SiteLogo from "@/components/SiteLogo.tsx"
 
 export default function LoginPage() {
     const [tabs, setTabs] = useState("tab-1");
@@ -22,8 +22,7 @@ export default function LoginPage() {
         <Box w="full" maxW="400px" mx="auto" p={8}>
             <VStack gap={6} align="stretch">
 
-                <Image src={Logo} alt="Logo" height="200px" mx="auto" />
-
+                <SiteLogo/>
                 {header}
                 {displayText}
 
