@@ -1,5 +1,4 @@
-# Stage 1: Build
-FROM node:22-alpine AS build
+FROM node:22-alpine
 
 WORKDIR /app
 
@@ -8,18 +7,6 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
-
-
-# Stage 2: Serve
-FROM node:22-alpine
-
-WORKDIR /app
-
-RUN npm install -g serve
-
-COPY --from=build /app/dist ./dist
-
 EXPOSE 3000
 
-CMD ["serve", "-s", "dist", "-l", "3000"]
+CMD ["npm", "run", "dev", "--", "--host"]

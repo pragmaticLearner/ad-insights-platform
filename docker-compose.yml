@@ -32,9 +32,11 @@ services:
     build:
       context: ./ad-insights-frontend
     ports:
-      - "3000:3000"
-    depends_on:
-      - backend
+      - "3000:5173"
+    volumes:
+      - ./ad-insights-frontend:/app
+      - /app/node_modules
+    command: npm run dev
     environment:
       VITE_API_URL: http://localhost:8080
     networks:
