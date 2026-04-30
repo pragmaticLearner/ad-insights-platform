@@ -1,0 +1,47 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: ad-insights-db
+    environment:
+      POSTGRES_DB: ad-insights
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./ad-insights-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ad-insights
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./ad-insights-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://localhost:8080
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
+volumes:
+  pgdata:
