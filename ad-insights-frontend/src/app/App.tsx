@@ -3,6 +3,7 @@ import LoginPage from '../features/auth/pages/LoginPage.tsx';
 import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage.tsx";
 import LandingPage from "@/features/auth/pages/LandingPage.tsx";
 import AboutPage from "@/features/auth/pages/AboutPage.tsx";
+import PricingPage from "@/features/auth/pages/PricingPage.tsx";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           <Routes>
               <Route path={"/"} element={<LandingPage/>} />
               <Route path={"/about"} element={<AboutPage/>} />
+              <Route path={"/pricing"} element={<PricingPage/>} />
               <Route path={"/login"} element={<LoginPage/>} />
               <Route path={"/forgot-password"} element={<ForgotPasswordPage/>} />
           </Routes>

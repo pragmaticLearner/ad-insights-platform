@@ -1,6 +1,5 @@
 import NavBar from "@/components/NavBar.tsx";
-import {Box, Image} from "@chakra-ui/react";
-import Logo from "@/assets/giraffe_logo.jpg";
+import {Box} from "@chakra-ui/react";
 
 export default function LandingPage() {
     return (
@@ -10,7 +9,6 @@ export default function LandingPage() {
                 position="relative"
                 bgSize={"sm"}
             >
-                <Image src={Logo} alt="giraffes" />
             </Box>
         </>
     );
