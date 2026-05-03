@@ -1,8 +1,17 @@
 package com.example.adinsightsbackend.entities;
 
+import com.example.adinsightsbackend.utils.enums.Role;
 import jakarta.persistence.*;
+import lombok.*;
+import org.jspecify.annotations.Nullable;
 
 @Entity
+@Table(name = "users")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = "password")
 public class User {
 
     @Id
@@ -21,6 +30,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, columnDefinition = "user")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
 }

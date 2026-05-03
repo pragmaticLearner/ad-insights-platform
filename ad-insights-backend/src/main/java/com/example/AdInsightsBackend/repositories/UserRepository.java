@@ -1,4 +1,12 @@
 package com.example.adinsightsbackend.repositories;
 
-interface UserRepository extends org.springframework.data.repository.CrudRepository<com.example.adinsightsbackend.entities.User, java.lang.Long> {
+import com.example.adinsightsbackend.entities.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
 }
