@@ -25,8 +25,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ad-insights
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
-      SPRING_SECURITY_USER_NAME: admin
-      SPRING_SECURITY_USER_PASSWORD: admin123
+    volumes:
+      - ./ad-insights-backend/src:/app/src
+      - ./ad-insights-backend/target:/app/target
     networks:
       - app-network
 
