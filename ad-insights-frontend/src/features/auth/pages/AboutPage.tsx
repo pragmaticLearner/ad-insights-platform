@@ -1,7 +1,7 @@
 export default function AboutPage() {
     return (
         <div>
-            AboutPage
+            <h1 className={"text-center"}>About Page</h1>
         </div>
     );
 }

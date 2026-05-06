@@ -7,7 +7,7 @@ const links = [
     {name: "Home", to: "/"},
     {name: "About", to: "/about"},
     {name: "Pricing", to: "/pricing"},
-    {name: "Login", to: "/login"},
+    {name: "Login", to: "/auth/login"},
 ]
 
 export default function NavBar() {

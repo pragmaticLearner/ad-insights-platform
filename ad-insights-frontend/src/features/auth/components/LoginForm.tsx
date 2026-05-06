@@ -4,16 +4,11 @@ import { useForm } from "react-hook-form"
 import RememberMeCheckbox from "@/features/auth/components/RememberMeCheckbox.tsx";
 import ForgotPasswordLink from "@/features/auth/components/ForgotPasswordLink.tsx";
 import SignInButtons from "@/features/auth/components/SignInButtons.tsx";
-import {useState} from "react";
+import {type JSX, useState} from "react";
+import type {LoginFormData} from "./utils/LoginFormData.tsx";
+import {useNavigate} from "react-router";
 
-
-interface LoginFormData {
-    email: string;
-    password: string;
-    rememberMe: boolean;
-}
-
-export default function LoginForm() {
+export default function LoginForm(): JSX.Element {
     const {
         register,
         handleSubmit,
@@ -21,15 +16,36 @@ export default function LoginForm() {
     } = useForm<LoginFormData>();
 
     const [rememberMe, setRememberMe] = useState(false);
-    const onSubmit = handleSubmit((data) => {
-        console.log({
-            ...data,
-            rememberMe,
-        });
-    });
+
+    const navigate = useNavigate();
+
+    const onSubmit = async (data: LoginFormData) => {
+        console.log(data);
+        let isAuthenticated = false;
+        try {
+            const response = await fetch("http://localhost:8080/ga/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+            const res = await response.json();
+            console.log(res);
+            if (res.status === 200) {
+                isAuthenticated = true;
+            }
+
+            if (isAuthenticated) {
+                navigate("/home")
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <VStack gap={6} align="flex-start" maxW="sm">
 
                 <Field.Root invalid={!!errors.email}>

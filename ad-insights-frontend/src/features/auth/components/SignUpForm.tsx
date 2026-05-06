@@ -1,14 +1,8 @@
 import {Field, Input, VStack} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
 import SignInButtons from "@/features/auth/components/SignInButtons.tsx";
-
-interface SignUpFormData {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-}
+import type {SignUpFormData} from "./utils/LoginFormData.tsx";
+import {useNavigate} from "react-router";
 
 export default function SignUpForm() {
     const {
@@ -17,12 +11,33 @@ export default function SignUpForm() {
         formState: { errors },
     } = useForm<SignUpFormData>()
 
-    const onSubmit = handleSubmit((data) => {
-        console.log(data)
-    });
+    const navigate = useNavigate();
+
+    const onSubmit = async (data: SignUpFormData) => {
+        if (data.password !== data.confirmPassword) {
+            alert("Passwords must match");
+            return;
+        }
+        console.log(data);
+        try {
+            const response = await fetch("http://localhost:8080/ga/api/auth/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+
+            const res = await response.json();
+            console.log("User created successfully: ", res);
+            navigate("/home");
+        } catch (error) {
+            console.log("Error creating user", error);
+        }
+    }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <VStack gap="4" align="flex-start" maxW="sm">
                 <Field.Root invalid={!!errors.firstName}>
                     <Field.Label>First Name:</Field.Label>
