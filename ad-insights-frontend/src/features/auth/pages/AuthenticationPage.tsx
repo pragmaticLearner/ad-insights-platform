@@ -4,18 +4,18 @@ import LoginForm from "@/features/auth/components/LoginForm.tsx";
 import SignUpForm from "@/features/auth/components/SignUpForm.tsx";
 import SiteLogo from "@/components/SiteLogo.tsx"
 
-export default function LoginPage() {
-    const [tabs, setTabs] = useState("tab-1");
+export default function AuthenticationPage() {
+    const [tabs, setTabs] = useState("login-tab");
 
-    const header = tabs === "tab-1" ?
+    const header = tabs === "login-tab" ?
         <Heading textStyle={"title"}>Log in to your account</Heading> :
         <Heading textStyle={"title"}>Welcome!</Heading>
 
-    const displayText = tabs === "tab-1" ?
+    const displayText = tabs === "login-tab" ?
         <Text textStyle={"subtitle"}>Welcome back!</Text> :
         <Text textStyle={"subtitle"}>Please enter your details to sign up</Text>
 
-    const credentials = tabs === "tab-1" ?
+    const credentials = tabs === "login-tab" ?
         <LoginForm/> : <SignUpForm/>
 
     return (
@@ -31,11 +31,11 @@ export default function LoginPage() {
                     onValueChange={(e) => setTabs(e.value)}
                     variant="enclosed"
                     fitted
-                    defaultValue="tab-1"
+                    defaultValue="login-tab"
                 >
                     <Tabs.List>
-                        <Tabs.Trigger value="tab-1">Log in</Tabs.Trigger>
-                        <Tabs.Trigger value="tab-2">Sign up</Tabs.Trigger>
+                        <Tabs.Trigger value="login-tab">Log in</Tabs.Trigger>
+                        <Tabs.Trigger value="signup-tab">Sign up</Tabs.Trigger>
                     </Tabs.List>
                 </Tabs.Root>
 
