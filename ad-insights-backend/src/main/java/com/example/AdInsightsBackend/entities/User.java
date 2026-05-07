@@ -3,7 +3,6 @@ package com.example.adinsightsbackend.entities;
 import com.example.adinsightsbackend.utils.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
-import org.jspecify.annotations.Nullable;
 
 @Entity
 @Table(name = "users")

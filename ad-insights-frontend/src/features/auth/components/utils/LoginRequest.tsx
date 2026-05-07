@@ -1,12 +1,12 @@
-export interface LoginFormData {
+export interface LoginRequest {
     email: string;
     password: string;
 }
 
-export interface SignUpFormData extends LoginFormData {
+export interface SignUpRequest extends LoginRequest {
     firstName: string;
     lastName: string;
     email: string;
     password: string;
-    confirmPassword: string;
+    confirmPassword?: string;
 }
