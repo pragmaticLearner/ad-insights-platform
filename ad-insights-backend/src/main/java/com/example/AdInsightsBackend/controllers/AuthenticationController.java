@@ -3,9 +3,11 @@ package com.example.adinsightsbackend.controllers;
 import com.example.adinsightsbackend.controllers.requests.LoginRequest;
 import com.example.adinsightsbackend.controllers.requests.SignUpRequest;
 import com.example.adinsightsbackend.services.AuthenticationService;
-import com.example.adinsightsbackend.services.UserService;
 import com.example.adinsightsbackend.utils.exceptions.InvalidCredentialsProvided;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,10 +23,12 @@ class AuthenticationController {
 
     private final AuthenticationService authenticationService;
     private final AuthenticationManager authenticationManager;
+    private static Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest request) throws InvalidCredentialsProvided {
         try {
+            logger.info("Received login request: " + request);
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             request.getEmail(),
@@ -40,7 +44,14 @@ class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<String> postUser(@RequestBody SignUpRequest request) {
-        authenticationService.register(request);
-        return ResponseEntity.ok("Successfully created new user");
+        logger.info("Received sign up request: " +  request);
+        try {
+            authenticationService.registerNewUser(request);
+            return ResponseEntity.ok("Successfully created new user");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body(e.getMessage());
+        }
     }
 }
