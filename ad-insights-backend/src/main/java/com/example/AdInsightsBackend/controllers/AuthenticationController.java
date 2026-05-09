@@ -1,5 +1,6 @@
 package com.example.adinsightsbackend.controllers;
 
+import com.example.adinsightsbackend.controllers.requests.ForgotPasswordRequest;
 import com.example.adinsightsbackend.controllers.requests.LoginRequest;
 import com.example.adinsightsbackend.controllers.requests.SignUpRequest;
 import com.example.adinsightsbackend.services.AuthenticationService;
@@ -23,7 +24,7 @@ class AuthenticationController {
 
     private final AuthenticationService authenticationService;
     private final AuthenticationManager authenticationManager;
-    private static Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest request) throws InvalidCredentialsProvided {
@@ -56,7 +57,8 @@ class AuthenticationController {
     }
 
     @PostMapping("/forgot_password")
-    public ResponseEntity<String> changePassword(@RequestBody String email) {
+    public ResponseEntity<String> changePassword(@RequestBody ForgotPasswordRequest request) {
+        String email = request.getEmail();
         logger.info("Received change password request: " + email);
         try {
             authenticationService.changePassword(email);

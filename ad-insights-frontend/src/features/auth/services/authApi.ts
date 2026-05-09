@@ -1,5 +1,5 @@
 import { api } from "@/lib/api";
-import type {LoginRequest, SignUpRequest} from "../components/utils/LoginRequest.tsx";
+import type {ForgotPasswordRequest, LoginRequest, SignUpRequest} from "../components/utils/LoginRequest.tsx";
 
 export const login = async (request: LoginRequest) => {
     const response = await api.post(
@@ -17,10 +17,10 @@ export const signup = async (request: SignUpRequest) => {
     return response.data;
 };
 
-export const forgotPassword = async (request: LoginRequest) => {
+export const forgotPassword = async (request: ForgotPasswordRequest) => {
     const response = await api.post(
         import.meta.env.VITE_FORGOT_PASSWORD_URL,
-        request.email
+        request
     );
     return response.data;
 }

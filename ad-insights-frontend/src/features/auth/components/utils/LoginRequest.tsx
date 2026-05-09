@@ -10,3 +10,7 @@ export interface SignUpRequest {
     password: string;
     confirmPassword: string;
 }
+
+export interface ForgotPasswordRequest {
+    email: string;
+}

@@ -14,9 +14,14 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final EmailService emailService;
 
     public void registerUser(SignUpRequest request) throws IllegalArgumentException {
         try {
+            if (userRepository.existsByEmail(request.getEmail())) {
+                throw new DataIntegrityViolationException("Email already exists");
+            }
+
             User user = User.builder()
                     .firstName(request.getFirstName())
                     .lastName(request.getLastName())
@@ -31,6 +36,11 @@ public class AuthenticationService {
     }
 
     public void changePassword(String email) {
-        System.out.println("Changing password for user: " + email);
+        Boolean userExists = userRepository.existsByEmail(email);
+        System.out.println("User exists: " + userExists);
+
+        if (userExists) {
+            emailService.sendForgotPasswordEmail(email);
+        }
     }
 }

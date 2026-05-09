@@ -1,7 +1,7 @@
 import {Box, Button, Card, Field, Input, VStack} from "@chakra-ui/react";
 import {useNavigate} from "react-router";
 import {forgotPassword} from "@/features/auth/services/authApi.ts";
-import type {LoginRequest} from "@/features/auth/components/utils/LoginRequest.tsx";
+import type {ForgotPasswordRequest, LoginRequest} from "@/features/auth/components/utils/LoginRequest.tsx";
 import {useForm} from "react-hook-form";
 import {useState} from "react";
 
@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const navigate = useNavigate();
 
-    async function onSubmit(request: LoginRequest) {
+    async function onSubmit(request: ForgotPasswordRequest) {
         console.log("clicked");
         await forgotPassword(request)
         setIsSubmitted(true);
