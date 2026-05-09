@@ -12,7 +12,7 @@ export default function RememberMeCheckbox({ checked, onCheckedChange }: Props) 
             onCheckedChange={(e) => onCheckedChange(!!e.checked)}>
             <Checkbox.HiddenInput />
             <Checkbox.Control />
-            <Checkbox.Label>Remember Me?</Checkbox.Label>
+            <Checkbox.Label> Remember Me?</Checkbox.Label>
         </Checkbox.Root>
     );
 }

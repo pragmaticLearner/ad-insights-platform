@@ -1,6 +1,6 @@
 import {Button, Field, HStack, Input, VStack} from "@chakra-ui/react";
 import { PasswordInput } from "@/features/auth/components/PasswordInput.tsx";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import RememberMeCheckbox from "@/features/auth/components/RememberMeCheckbox.tsx";
 import ForgotPasswordLink from "@/features/auth/components/ForgotPasswordLink.tsx";
 import {type JSX, useState} from "react";
@@ -24,7 +24,7 @@ export default function LoginForm(): JSX.Element {
             await login(request);
             navigate(import.meta.env.VITE_HOME_URL);
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -34,12 +34,20 @@ export default function LoginForm(): JSX.Element {
 
                 <Field.Root invalid={!!errors.email}>
                     <Field.Label>Email:</Field.Label>
-                    <Input {...register("email")} />
+                    <Input {...register("email", {
+                        required: "Email is required",
+                        pattern: {value: /\S+@\S+\.\S+/, message: "Invalid email address"}
+                    })} />
+                    <Field.ErrorText>{errors.email?.message}</Field.ErrorText>
                 </Field.Root>
 
                 <Field.Root invalid={!!errors.password}>
                     <Field.Label>Password:</Field.Label>
-                    <PasswordInput {...register("password")} />
+                    <PasswordInput {...register("password", {
+                        required: "Password is required",
+                        minLength: {value: 8, message: "Password must be at least 8 characters"}
+                    })} />
+                    <Field.ErrorText>{errors.password?.message}</Field.ErrorText>
                 </Field.Root>
 
                 <HStack justify="space-between" w="full">
