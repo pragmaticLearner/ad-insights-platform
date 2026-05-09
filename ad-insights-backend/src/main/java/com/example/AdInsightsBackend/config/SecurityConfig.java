@@ -39,7 +39,12 @@ class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, "/auth/login", "/auth/signup")
+                        .requestMatchers(
+                                HttpMethod.POST,
+                                "/auth/login",
+                                "/auth/signup",
+                                "/auth/forgot_password"
+                                )
                         .permitAll()
                         .anyRequest()
                         .authenticated()

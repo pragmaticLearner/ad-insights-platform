@@ -1,4 +1,4 @@
-import {Route, BrowserRouter, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AuthenticationPage from '../features/auth/pages/AuthenticationPage.tsx';
 import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage.tsx";
 import LandingPage from "@/features/auth/pages/LandingPage.tsx";

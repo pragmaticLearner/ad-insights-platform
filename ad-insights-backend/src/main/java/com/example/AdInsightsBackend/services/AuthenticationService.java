@@ -15,7 +15,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
-    public void registerNewUser(SignUpRequest request) throws IllegalArgumentException {
+    public void registerUser(SignUpRequest request) throws IllegalArgumentException {
         try {
             User user = User.builder()
                     .firstName(request.getFirstName())
@@ -28,5 +28,9 @@ public class AuthenticationService {
         } catch (DataIntegrityViolationException e) {
             throw new IllegalArgumentException("User with email: " + request.getEmail() + "already exists");
         }
+    }
+
+    public void changePassword(String email) {
+        System.out.println("Changing password for user: " + email);
     }
 }

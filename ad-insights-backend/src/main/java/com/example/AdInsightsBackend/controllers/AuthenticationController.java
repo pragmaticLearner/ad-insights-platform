@@ -43,15 +43,26 @@ class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> postUser(@RequestBody SignUpRequest request) {
+    public ResponseEntity<String> registerUser(@RequestBody SignUpRequest request) {
         logger.info("Received sign up request: " +  request);
         try {
-            authenticationService.registerNewUser(request);
+            authenticationService.registerUser(request);
             return ResponseEntity.ok("Successfully created new user");
         } catch (IllegalArgumentException e) {
             return ResponseEntity
                     .status(HttpStatus.FORBIDDEN)
                     .body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/forgot_password")
+    public ResponseEntity<String> changePassword(@RequestBody String email) {
+        logger.info("Received change password request: " + email);
+        try {
+            authenticationService.changePassword(email);
+            return ResponseEntity.ok("Successfully changed password");
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 }
