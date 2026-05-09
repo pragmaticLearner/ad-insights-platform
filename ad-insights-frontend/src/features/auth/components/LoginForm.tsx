@@ -19,12 +19,12 @@ export default function LoginForm(): JSX.Element {
 
     const navigate = useNavigate();
 
-    const onSubmit = async (data: LoginRequest) => {
+    const onSubmit = async (request: LoginRequest) => {
         try {
-            await login(data.email, data.password);
+            await login(request);
             navigate(import.meta.env.VITE_HOME_URL);
         } catch (error) {
-            console.error("Login failed:", error);
+            console.log(error);
         }
     };
 
@@ -51,7 +51,7 @@ export default function LoginForm(): JSX.Element {
                 </HStack>
 
                 <VStack align={"stretch"} w={"full"}>
-                    <Button type={"submit"}>Sign in</Button>
+                    <Button type={"submit"}>Sign In</Button>
                 </VStack>
             </VStack>
         </form>

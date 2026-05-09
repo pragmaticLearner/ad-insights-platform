@@ -3,7 +3,7 @@ export interface LoginRequest {
     password: string;
 }
 
-export interface SignUpRequest extends LoginRequest {
+export interface SignUpRequest {
     firstName: string;
     lastName: string;
     email: string;
