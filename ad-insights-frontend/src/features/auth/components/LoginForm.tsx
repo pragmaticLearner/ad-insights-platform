@@ -24,7 +24,7 @@ export default function LoginForm(): JSX.Element {
             await login(request);
             navigate(import.meta.env.VITE_HOME_URL);
         } catch (error) {
-            console.error(error);
+            console.log("Error logging in: ", error);
         }
     };
 
@@ -36,7 +36,7 @@ export default function LoginForm(): JSX.Element {
                     <Field.Label>Email:</Field.Label>
                     <Input {...register("email", {
                         required: "Email is required",
-                        pattern: {value: /\S+@\S+\.\S+/, message: "Invalid email address"}
+                        pattern: {value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email address"}
                     })} />
                     <Field.ErrorText>{errors.email?.message}</Field.ErrorText>
                 </Field.Root>

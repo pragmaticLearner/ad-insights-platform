@@ -1,7 +1,7 @@
 export default function HomePage() {
     return (
         <div>
-            Homepage
+            <h1 className={"text-center"}>Home Page</h1>
         </div>
     );
 }

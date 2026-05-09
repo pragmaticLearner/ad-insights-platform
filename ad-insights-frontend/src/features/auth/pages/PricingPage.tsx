@@ -1,7 +1,7 @@
 export default function PricingPage() {
     return (
         <div>
-            PricingPage
+            <h1 className={"text-center"}>Pricing Page</h1>
         </div>
     );
 }

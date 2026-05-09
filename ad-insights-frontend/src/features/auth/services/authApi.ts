@@ -14,6 +14,13 @@ export const signup = async (request: SignUpRequest) => {
         import.meta.env.VITE_SIGNUP_URL,
         request
     );
-    console.log("Sign up response: ", response);
-    return response;
+    return response.data;
 };
+
+export const forgotPassword = async (request: LoginRequest) => {
+    const response = await api.post(
+        import.meta.env.VITE_FORGOT_PASSWORD_URL,
+        request.email
+    );
+    return response.data;
+}

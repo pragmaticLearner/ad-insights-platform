@@ -19,9 +19,8 @@ function App() {
               <Route path={import.meta.env.VITE_AUTH_URL} element={<AuthenticationPage />}>
                   <Route path={import.meta.env.VITE_LOGIN_URL} element={<LoginForm />} />
                   <Route path={import.meta.env.VITE_SIGNUP_URL} element={<SignUpForm />} />
-                  <Route index element={<LoginForm />} />
               </Route>
-              <Route path={import.meta.env.VITE_FORGOT_PASSWORD} element={<ForgotPasswordPage/>} />
+              <Route path={import.meta.env.VITE_FORGOT_PASSWORD_URL} element={<ForgotPasswordPage/>} />
           </Routes>
       </BrowserRouter>
   )

@@ -14,16 +14,16 @@ export default function SignUpForm() {
 
     const navigate = useNavigate();
 
-    const onSubmit = async (data: SignUpRequest) => {
-        if (data.password !== data.confirmPassword) {
+    const onSubmit = async (request: SignUpRequest) => {
+        if (request.password !== request.confirmPassword) {
             alert("Passwords must match");
             return;
         }
         try {
-            await signup(data);
+            await signup(request);
             navigate(import.meta.env.VITE_HOME_URL);
         } catch (error) {
-            console.log("Error creating user", error);
+            console.log("Error creating user: ", error);
         }
     }
 

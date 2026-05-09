@@ -1,7 +1,10 @@
-import {Link} from "@chakra-ui/react";
+import { Link as ChakraLink } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function ForgotPasswordLink() {
     return (
-        <Link textStyle={"text"} href={import.meta.env.VITE_FORGOT_PASSWORD_URL}>Forgot password?</Link>
+        <ChakraLink asChild>
+            <RouterLink to={import.meta.env.VITE_FORGOT_PASSWORD_URL}>Forgot password?</RouterLink>
+        </ChakraLink>
     );
 }
