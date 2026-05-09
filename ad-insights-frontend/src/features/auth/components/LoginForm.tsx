@@ -22,7 +22,7 @@ export default function LoginForm(): JSX.Element {
     const onSubmit = async (data: LoginRequest) => {
         try {
             await login(data.email, data.password);
-            navigate("/home");
+            navigate(import.meta.env.VITE_HOME_URL);
         } catch (error) {
             console.error("Login failed:", error);
         }

@@ -12,17 +12,17 @@ function App() {
   return (
       <BrowserRouter>
           <Routes>
-              <Route path={"/"} element={<LandingPage/>} />
-              <Route path={"/about"} element={<AboutPage/>} />
-              <Route path={"/pricing"} element={<PricingPage/>} />
-              <Route path="/auth" element={<AuthenticationPage />}>
-                  <Route path="login" element={<LoginForm />} />
-                  <Route path="signup" element={<SignUpForm />} />
+              <Route path={import.meta.env.VITE_LANDING_URL} element={<LandingPage/>} />
+              <Route path={import.meta.env.VITE_HOME_URL} element={<AboutPage/>} />
+              <Route path={import.meta.env.VITE_PRICING_URL} element={<PricingPage/>} />
+              <Route path={import.meta.env.VITE_AUTH_URL} element={<AuthenticationPage />}>
+                  <Route path={import.meta.env.VITE_LOGIN_URL} element={<LoginForm />} />
+                  <Route path={import.meta.env.VITE_SIGNUP_URL} element={<SignUpForm />} />
                   <Route index element={<LoginForm />} />
               </Route>
-              <Route path={"/forgot-password"} element={<ForgotPasswordPage/>} />
+              <Route path={import.meta.env.VITE_FORGOT_PASSWORD} element={<ForgotPasswordPage/>} />
 
-              <Route path={"/home"} element={<Homepage/>} />
+              <Route path={import.meta.env.VITE_HOME_URL} element={<Homepage/>} />
           </Routes>
       </BrowserRouter>
   )

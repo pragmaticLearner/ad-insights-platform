@@ -29,7 +29,7 @@ export default function AuthenticationPage() {
                 <Tabs.Root
                     value={isSignup ? "signup" : "login"}
                     onValueChange={(e) => {
-                        navigate(e.value === "signup" ? "/auth/signup" : "/auth/login");
+                        navigate(e.value === "signup" ? import.meta.env.VITE_SIGNUP_URL : import.meta.env.VITE_LOGIN_URL);
                     }}
                     variant="enclosed"
                     fitted

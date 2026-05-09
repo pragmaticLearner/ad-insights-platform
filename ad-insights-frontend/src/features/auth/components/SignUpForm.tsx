@@ -22,7 +22,7 @@ export default function SignUpForm() {
         console.log(data);
         try {
             await signup(data);
-            navigate("/home");
+            navigate(import.meta.env.VITE_HOME_URL);
         } catch (error) {
             console.log("Error creating user", error);
         }

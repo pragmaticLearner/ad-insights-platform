@@ -4,10 +4,10 @@ import { Link as RouterLink } from 'react-router-dom';
 import Logo from "@/assets/giraffe_logo.jpg";
 
 const links = [
-    {name: "Home", to: "/"},
-    {name: "About", to: "/about"},
-    {name: "Pricing", to: "/pricing"},
-    {name: "Login", to: "/auth/login"},
+    {name: "Home", to: import.meta.env.VITE_LANDING_URL},
+    {name: "About", to: import.meta.env.VITE_ABOUT_URL},
+    {name: "Pricing", to: import.meta.env.VITE_PRICING_URL},
+    {name: "Login", to: import.meta.env.VITE_LOGIN_URL},
 ]
 
 export default function NavBar() {
