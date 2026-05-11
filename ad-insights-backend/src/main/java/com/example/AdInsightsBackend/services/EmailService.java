@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -19,37 +20,41 @@ class EmailService {
     @Autowired
     TemplateEngine templateEngine;
 
-    @Value("${email.name.password-reset}")
-    private String emailNamePasswordReset;
+    @Value("${spring.mail.username}")
+    private String emailFrom;
 
+    @Async
     public void sendWelcomeEmail(String to, String name) throws MessagingException {
         Context context = new Context();
         context.setVariable("name", name);
 
-        String processHtml = templateEngine.process("welcome-email", context);
+        String htmlBody = templateEngine.process("emails/welcome.html", context);
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 
-        try {
-            helper.setText(processHtml, true);
-            helper.setTo(to);
-            helper.setSubject("Welcome!");
-            helper.setFrom(emailNamePasswordReset);
-            mailSender.send(mimeMessage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        helper.setFrom(emailFrom);
+        helper.setTo(to);
+        helper.setSubject("Welcome");
+        helper.setText(htmlBody, true);
+
+        mailSender.send(mimeMessage);
     }
 
+    @Async
     public void sendForgotPasswordEmail(String email) {
-        SimpleMailMessage message = new SimpleMailMessage();
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setFrom("noreply.example.com");
-        message.setTo(email);
-        message.setSubject("Forgot Password Reset");
-        message.setText("Your email has been sent to " + email);
+            message.setFrom(emailFrom);
+            message.setTo(email);
+            message.setSubject("Forgot Password Reset");
+            message.setText("Please reset your password for " + email);
 
-        mailSender.send(message);
+            mailSender.send(message);
+            System.out.println("Forgot Password Reset Email Sent");
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

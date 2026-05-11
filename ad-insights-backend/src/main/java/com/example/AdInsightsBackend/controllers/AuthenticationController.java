@@ -5,6 +5,7 @@ import com.example.adinsightsbackend.controllers.requests.LoginRequest;
 import com.example.adinsightsbackend.controllers.requests.SignUpRequest;
 import com.example.adinsightsbackend.services.AuthenticationService;
 import com.example.adinsightsbackend.utils.exceptions.InvalidCredentialsProvided;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,6 +54,8 @@ class AuthenticationController {
             return ResponseEntity
                     .status(HttpStatus.FORBIDDEN)
                     .body(e.getMessage());
+        } catch (MessagingException e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 
