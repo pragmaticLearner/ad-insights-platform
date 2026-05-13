@@ -4,11 +4,11 @@ import com.example.adinsightsbackend.controllers.requests.ForgotPasswordRequest;
 import com.example.adinsightsbackend.controllers.requests.LoginRequest;
 import com.example.adinsightsbackend.controllers.requests.SignUpRequest;
 import com.example.adinsightsbackend.services.AuthenticationService;
-import com.example.adinsightsbackend.utils.exceptions.InvalidCredentialsProvided;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,7 +28,7 @@ class AuthenticationController {
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest request) throws InvalidCredentialsProvided {
+    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
         try {
             logger.info("Received login request: " + request);
             Authentication authentication = authenticationManager.authenticate(
@@ -40,7 +40,8 @@ class AuthenticationController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             return ResponseEntity.ok("Logged in as " + authentication.getPrincipal());
         } catch (AuthenticationException e) {
-            throw new InvalidCredentialsProvided(e.getMessage());
+            logger.info("Authentication failed: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Bad Credentials");
         }
     }
 
@@ -50,9 +51,9 @@ class AuthenticationController {
         try {
             authenticationService.registerUser(request);
             return ResponseEntity.ok("Successfully created new user");
-        } catch (IllegalArgumentException e) {
+        } catch (DataIntegrityViolationException e) {
             return ResponseEntity
-                    .status(HttpStatus.FORBIDDEN)
+                    .status(HttpStatus.CONFLICT)
                     .body(e.getMessage());
         } catch (MessagingException e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
@@ -67,6 +68,7 @@ class AuthenticationController {
             authenticationService.changePassword(email);
             return ResponseEntity.ok("Successfully changed password");
         } catch (Exception e) {
+            // TODO: figure out which errors can occur and return correct HttpStatus codes
             throw new IllegalArgumentException(e.getMessage());
         }
     }

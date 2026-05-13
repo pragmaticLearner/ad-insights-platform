@@ -19,7 +19,7 @@ public class AuthenticationService {
     private final EmailService emailService;
 
     @Transactional
-    public void registerUser(SignUpRequest request) throws IllegalArgumentException, MessagingException {
+    public void registerUser(SignUpRequest request) throws DataIntegrityViolationException, MessagingException {
         try {
             if (userRepository.existsByEmail(request.getEmail())) {
                 throw new DataIntegrityViolationException("User with email: " + request.getEmail() + " already exists");
@@ -36,7 +36,7 @@ public class AuthenticationService {
             userRepository.save(user);
             emailService.sendWelcomeEmail(user.getEmail(), user.getFirstName());
         } catch (DataIntegrityViolationException e) {
-            throw new IllegalArgumentException("User with email: " + request.getEmail() + "already exists");
+            throw new DataIntegrityViolationException("User with email: " + request.getEmail() + "already exists");
         } catch (MessagingException e) {
             throw new MessagingException("Could not send welcome email to user");
         }

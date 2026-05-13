@@ -1,4 +1,4 @@
-import {Button, Field, HStack, Input, VStack} from "@chakra-ui/react";
+import {Button, Field, HStack, Input, VStack, Text} from "@chakra-ui/react";
 import { PasswordInput } from "@/features/auth/components/PasswordInput.tsx";
 import { useForm } from "react-hook-form";
 import RememberMeCheckbox from "@/features/auth/components/RememberMeCheckbox.tsx";
@@ -12,6 +12,7 @@ export default function LoginForm(): JSX.Element {
     const {
         register,
         handleSubmit,
+        setError,
         formState: { errors },
     } = useForm<LoginRequest>();
 
@@ -23,14 +24,33 @@ export default function LoginForm(): JSX.Element {
         try {
             await login(request);
             navigate(import.meta.env.VITE_HOME_URL);
-        } catch (error) {
-            console.log("Error logging in: ", error);
+        } catch (error: any) {
+            if (error.response?.status === 401) {
+                setError("root", {
+                    type: "server",
+                    message: "Incorrect email or password",
+                });
+                setError("email", {
+                    type: "server",
+                    message: "",
+                });
+                setError("password", {
+                    type: "server",
+                    message: "",
+                });
+            }
         }
     };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <VStack gap={6} align="flex-start" maxW="sm">
+
+                {errors.root && (
+                    <Text color="red.500" fontSize="sm" fontWeight={"bold"}>
+                        Incorrect email or password
+                    </Text>
+                )}
 
                 <Field.Root invalid={!!errors.email}>
                     <Field.Label>Email:</Field.Label>
