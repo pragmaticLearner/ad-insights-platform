@@ -4,6 +4,7 @@ import com.example.adinsightsbackend.controllers.requests.ForgotPasswordRequest;
 import com.example.adinsightsbackend.controllers.requests.LoginRequest;
 import com.example.adinsightsbackend.controllers.requests.SignUpRequest;
 import com.example.adinsightsbackend.services.AuthenticationService;
+import com.example.adinsightsbackend.utils.exceptions.UserAlreadyExistsException;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -51,7 +52,7 @@ class AuthenticationController {
         try {
             authenticationService.registerUser(request);
             return ResponseEntity.ok("Successfully created new user");
-        } catch (DataIntegrityViolationException e) {
+        } catch (UserAlreadyExistsException e) {
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
                     .body(e.getMessage());
