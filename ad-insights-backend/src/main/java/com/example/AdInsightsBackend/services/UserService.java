@@ -1,6 +1,6 @@
 package com.example.adinsightsbackend.services;
 
-import com.example.adinsightsbackend.entities.User;
+import com.example.adinsightsbackend.models.User;
 import com.example.adinsightsbackend.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

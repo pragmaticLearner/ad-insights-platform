@@ -66,10 +66,9 @@ class AuthenticationController {
         logger.info("Received change password request: " + email);
         try {
             authenticationService.changePassword(email);
-            return ResponseEntity.ok("Successfully changed password");
         } catch (Exception e) {
-            // TODO: figure out which errors can occur and return correct HttpStatus codes
-            throw new IllegalArgumentException(e.getMessage());
+            logger.error("Error changing password: " + e.getMessage());
         }
+        return ResponseEntity.status(HttpStatus.OK).body("If an account exists, a reset email has been sent");
     }
 }

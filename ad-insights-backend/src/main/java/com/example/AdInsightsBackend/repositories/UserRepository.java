@@ -1,11 +1,9 @@
 package com.example.adinsightsbackend.repositories;
 
-import com.example.adinsightsbackend.entities.User;
+import com.example.adinsightsbackend.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository
