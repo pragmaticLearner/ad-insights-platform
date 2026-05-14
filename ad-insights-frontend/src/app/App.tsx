@@ -6,7 +6,7 @@ import AboutPage from "@/features/auth/pages/AboutPage.tsx";
 import PricingPage from "@/features/auth/pages/PricingPage.tsx";
 import LoginForm from "@/features/auth/components/LoginForm.tsx";
 import SignUpForm from "@/features/auth/components/SignUpForm.tsx";
-import HomePage from "../features/auth/pages/HomePage.tsx";
+import HomePage from "../features/ui/pages/HomePage.tsx";
 
 function App() {
   return (
