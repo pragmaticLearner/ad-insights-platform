@@ -25,4 +25,4 @@ Following typical Spring boot format in order to organize and structure code con
 - **Controllers**: Intended for controlling which endpoints exist, can be called, and data to return
 - **Services**: Intended for business logic layer
 - **Repositories**: Intended for interacting with database tables
-- **Entities**: Intended for defining db table schemas using JPA
+- **Models**: Intended for defining db table schemas using JPA

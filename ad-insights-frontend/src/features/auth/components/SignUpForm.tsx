@@ -9,6 +9,7 @@ export default function SignUpForm() {
     const {
         register,
         handleSubmit,
+        setError,
         formState: { errors },
     } = useForm<SignUpRequest>()
 
@@ -16,14 +17,26 @@ export default function SignUpForm() {
 
     const onSubmit = async (request: SignUpRequest) => {
         if (request.password !== request.confirmPassword) {
-            alert("Passwords must match");
+            setError("password", {
+                type: "unmatched fields",
+                message: "Passwords must be the same",
+            });
+            setError("confirmPassword", {
+                type: "unmatched fields",
+                message: "Passwords must be the same",
+            });
             return;
         }
         try {
             await signup(request);
             navigate(import.meta.env.VITE_HOME_URL);
-        } catch (error) {
-            console.log("Error creating user: ", error);
+        } catch (error: any) {
+            if (error.response?.status === 409) {
+                setError("email", {
+                    type: "server",
+                    message: "Email already in use.",
+                });
+            }
         }
     }
 
@@ -32,12 +45,18 @@ export default function SignUpForm() {
             <VStack gap="4" align="flex-start" maxW="sm">
                 <Field.Root invalid={!!errors.firstName}>
                     <Field.Label>First Name:</Field.Label>
-                    <Input {...register("firstName")} />
+                    <Input {...register("firstName", {
+                        required: "First name is required"
+                    })} />
+                    <Field.ErrorText>{errors.firstName?.message}</Field.ErrorText>
                 </Field.Root>
 
                 <Field.Root invalid={!!errors.lastName}>
                     <Field.Label>Last Name:</Field.Label>
-                    <Input {...register("lastName")} />
+                    <Input {...register("lastName", {
+                        required: "Last name is required"
+                    })} />
+                    <Field.ErrorText>{errors.lastName?.message}</Field.ErrorText>
                 </Field.Root>
 
                 <Field.Root invalid={!!errors.email}>
@@ -60,7 +79,10 @@ export default function SignUpForm() {
 
                 <Field.Root invalid={!!errors.confirmPassword}>
                     <Field.Label>Confirm Password:</Field.Label>
-                    <PasswordInput {...register("confirmPassword")} />
+                    <PasswordInput {...register("confirmPassword", {
+                        required: "Must confirm password"
+                    })} />
+                    <Field.ErrorText>{errors.confirmPassword?.message}</Field.ErrorText>
                 </Field.Root>
 
                 <VStack align={"stretch"} w={"full"}>
