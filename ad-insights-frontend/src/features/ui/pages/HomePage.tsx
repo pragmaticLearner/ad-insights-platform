@@ -1,5 +1,5 @@
 import {Grid, GridItem} from "@chakra-ui/react";
-import NavBar from "@/features/ui/components/NavBar.tsx";
+import HomePageNavBar from "../components/navbar/HomePageNavBar.tsx";
 
 export default function HomePage() {
     return (
@@ -7,7 +7,7 @@ export default function HomePage() {
             templateAreas={`"nav nav" "aside main"`}
         >
             <GridItem area={"nav"}>
-                <NavBar />
+                <HomePageNavBar />
             </GridItem>
 
             <GridItem area={"aside"} bg={"gold"}>

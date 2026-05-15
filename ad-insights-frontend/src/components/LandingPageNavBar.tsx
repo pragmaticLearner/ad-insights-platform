@@ -10,7 +10,7 @@ const links = [
     {name: "Login", to: import.meta.env.VITE_LOGIN_URL},
 ]
 
-export default function NavBar() {
+export default function LandingPageNavBar() {
     return (
         <Flex as="nav" align="center" justify="space-between" p={4}>
             <HStack fontWeight="bold">

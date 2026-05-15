@@ -1,10 +1,10 @@
-import NavBar from "@/components/NavBar.tsx";
+import LandingPageNavBar from "../../../components/LandingPageNavBar.tsx";
 import {Box} from "@chakra-ui/react";
 
 export default function LandingPage() {
     return (
         <>
-            <NavBar />
+            <LandingPageNavBar />
             <Box
                 position="relative"
                 bgSize={"sm"}
