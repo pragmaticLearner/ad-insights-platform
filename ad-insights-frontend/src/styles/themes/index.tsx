@@ -8,7 +8,7 @@ const config = defineConfig({
                 bg: {
                     value: {
                         _light: "#FFFFFF",
-                        _dark: "#1E1E2E",
+                        _dark: "#0b0b44",
                     }
                 },
                 fg: {

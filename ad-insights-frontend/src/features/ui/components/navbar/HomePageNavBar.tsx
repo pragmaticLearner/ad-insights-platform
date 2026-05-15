@@ -1,7 +1,7 @@
 import {HStack, Image} from "@chakra-ui/react";
 import logo from "@/assets/giraffe_logo.jpg";
-import ColourModeSwitch from "@/features/ui/components/navbar/ColourModeSwitch.tsx";
 import {useNavigate} from "react-router-dom";
+import {ColorModeButton} from "@/components/ui/color-mode.tsx";
 
 export default function HomePageNavBar() {
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ export default function HomePageNavBar() {
                 onClick={() => navigate(import.meta.env.VITE_HOME_URL)}
                 cursor={"pointer"}
             />
-            <ColourModeSwitch />
+            <ColorModeButton />
         </HStack>
     );
 }
