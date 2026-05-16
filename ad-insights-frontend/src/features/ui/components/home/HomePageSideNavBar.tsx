@@ -2,13 +2,16 @@ import { Flex, HStack, Icon } from "@chakra-ui/react";
 import { IoMdSearch, IoMdPerson } from "react-icons/io";
 import { PiSidebarSimpleThin } from "react-icons/pi";
 import { IoIosBookmark } from "react-icons/io";
+import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoSettingsOutline, IoLogInOutline } from "react-icons/io5";
+import { MdDashboard } from "react-icons/md";
 import LogoText from "@/components/LogoText.tsx";
 import SideBarNavItem from "./SideBarNavItem";
 
 const mainNavItems = [
     { icon: IoMdSearch, label: "Search" },
     { icon: IoIosBookmark, label: "Favourites" },
+    { icon: MdDashboard, label: "Dashboard" },
 ];
 
 const bottomNavItems = [
@@ -20,6 +23,7 @@ const bottomNavItems = [
         ],
     },
     { icon: IoMdPerson, label: "Profile" },
+    { icon: IoInformationCircleOutline, label: "Help Center" },
 ];
 
 interface Props {

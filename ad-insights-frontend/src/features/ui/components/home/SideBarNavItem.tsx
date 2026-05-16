@@ -1,4 +1,4 @@
-import { Flex, Icon, Menu, IconButton } from "@chakra-ui/react";
+import {Flex, Icon, Menu, IconButton, Button} from "@chakra-ui/react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 interface MenuItemType {
@@ -25,7 +25,7 @@ export default function SideBarNavItem({ icon, label, isCollapsed, menuItems }: 
             borderRadius="md"
             _hover={{ bg: "gray.100" }}
             css={{
-                "&:hover .kebab-btn": { opacity: 1 }
+                "&:hover .kebab-btn": { opacity: 100 }
             }}
         >
             <Icon as={icon} boxSize={5} />
@@ -47,7 +47,13 @@ export default function SideBarNavItem({ icon, label, isCollapsed, menuItems }: 
                                 </IconButton>
                             </Menu.Trigger>
                             <Menu.Positioner>
-                                <Menu.Content>
+                                <Menu.Content
+                                    bg="white"
+                                    boxShadow="md"
+                                    borderRadius="md"
+                                    border="1px solid"
+                                    borderColor="gray.200"
+                                >
                                     {menuItems.map((item) => (
                                         <Menu.Item
                                             key={item.label}
@@ -55,7 +61,7 @@ export default function SideBarNavItem({ icon, label, isCollapsed, menuItems }: 
                                             onClick={item.onClick}
                                             color={item.color}
                                         >
-                                            {item.label}
+                                            <Button variant={"ghost"}>{item.label}</Button>
                                         </Menu.Item>
                                     ))}
                                 </Menu.Content>

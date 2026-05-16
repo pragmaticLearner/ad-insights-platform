@@ -20,7 +20,7 @@ export default function LandingPageNavBar() {
                     borderRadius={"full"}
                     fit={"cover"}
                 />
-                Giraffe Analytics
+                Geo Analytica
             </HStack>
 
             <HStack>

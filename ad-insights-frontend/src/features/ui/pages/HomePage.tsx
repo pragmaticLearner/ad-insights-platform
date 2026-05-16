@@ -14,7 +14,9 @@ export default function HomePage() {
             <Box
                 w={isCollapsed ? "4rem" : "18rem"}
                 flexShrink={0}
-                bg="#D5CACAFF"
+                bg="brand.sidebar"
+                borderRight="1px solid"
+                borderColor="gray.200"
                 transition="width 0.2s ease"
                 overflow="hidden"
             >
@@ -24,7 +26,11 @@ export default function HomePage() {
                 />
             </Box>
 
-            <Box flex={1} bg="dodgerblue">
+            <Box
+                flex={1}
+                bg="brand.primary"
+                padding={5}
+            >
                 Main
             </Box>
         </Flex>
