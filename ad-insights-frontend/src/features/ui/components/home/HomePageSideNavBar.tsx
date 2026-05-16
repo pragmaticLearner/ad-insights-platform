@@ -20,9 +20,16 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
                 p={2}
             >
                 {!isCollapsed && <LogoText />}
-                <Button variant="ghost" onClick={onToggle}>
-                    <Icon as={PiSidebarSimpleThin} boxSize={5} />
-                </Button>
+                <Icon
+                    onClick={onToggle}
+                    as={PiSidebarSimpleThin}
+                    boxSize={6}
+                    cursor="pointer"
+                    borderRadius="md"
+                    p={1}
+                    _hover={{ bg: "gray.100" }}
+                    transition="background 0.15s ease"
+                />
             </HStack>
 
             <SideBarNavItem icon={IoMdSearch} label="Search" isCollapsed={isCollapsed} />

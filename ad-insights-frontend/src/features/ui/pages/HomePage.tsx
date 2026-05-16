@@ -14,7 +14,7 @@ export default function HomePage() {
             <Box
                 w={isCollapsed ? "4rem" : "18rem"}
                 flexShrink={0}
-                bg="gold"
+                bg="#D5CACAFF"
                 transition="width 0.2s ease"
                 overflow="hidden"
             >
