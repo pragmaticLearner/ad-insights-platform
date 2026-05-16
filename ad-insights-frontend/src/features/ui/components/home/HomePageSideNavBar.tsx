@@ -1,9 +1,26 @@
-import { Button, Flex, HStack, Icon } from "@chakra-ui/react";
-import { IoMdSearch } from "react-icons/io";
+import { Flex, HStack, Icon } from "@chakra-ui/react";
+import { IoMdSearch, IoMdPerson } from "react-icons/io";
 import { PiSidebarSimpleThin } from "react-icons/pi";
-import LogoText from "@/components/LogoText.tsx";
 import { IoIosBookmark } from "react-icons/io";
+import { IoSettingsOutline, IoLogInOutline } from "react-icons/io5";
+import LogoText from "@/components/LogoText.tsx";
 import SideBarNavItem from "./SideBarNavItem";
+
+const mainNavItems = [
+    { icon: IoMdSearch, label: "Search" },
+    { icon: IoIosBookmark, label: "Favourites" },
+];
+
+const bottomNavItems = [
+    {
+        icon: IoSettingsOutline,
+        label: "Settings",
+        menuItems: [
+            { label: "Log out", icon: IoLogInOutline },
+        ],
+    },
+    { icon: IoMdPerson, label: "Profile" },
+];
 
 interface Props {
     isCollapsed: boolean;
@@ -11,19 +28,17 @@ interface Props {
 }
 
 export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
-    return (
-        <Flex direction="column" h="100%">
+    const navProps = { isCollapsed };
 
-            <HStack
-                justifyContent={isCollapsed ? "center" : "space-between"}
-                align="center"
-                p={2}
-            >
+    return (
+        <Flex direction="column" h="100%" p={2}>
+
+            <HStack justifyContent={isCollapsed ? "center" : "space-between"} align="center">
                 {!isCollapsed && <LogoText />}
                 <Icon
                     onClick={onToggle}
                     as={PiSidebarSimpleThin}
-                    boxSize={6}
+                    boxSize={7}
                     cursor="pointer"
                     borderRadius="md"
                     p={1}
@@ -32,8 +47,17 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
                 />
             </HStack>
 
-            <SideBarNavItem icon={IoMdSearch} label="Search" isCollapsed={isCollapsed} />
-            <SideBarNavItem icon={IoIosBookmark} label="Favourites" isCollapsed={isCollapsed} />
+            <Flex direction="column" flex={1} mt={4}>
+                {mainNavItems.map((item) => (
+                    <SideBarNavItem key={item.label} {...item} {...navProps} />
+                ))}
+            </Flex>
+
+            <Flex direction="column" mt="auto">
+                {bottomNavItems.map((item) => (
+                    <SideBarNavItem key={item.label} {...item} {...navProps} />
+                ))}
+            </Flex>
 
         </Flex>
     );
