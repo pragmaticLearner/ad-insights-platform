@@ -11,7 +11,7 @@ export default function SearchDialog({ open, onClose }: Props) {
             <Dialog.Backdrop />
             <Dialog.Positioner>
                 <Dialog.Content maxW="600px" mt="20vh">
-                    <Box p={3} borderBottom="1px solid" borderColor="gray.200">
+                    <Box p={3} borderBottom="1px solid" >
                         <Input
                             placeholder="Search..."
                             border="none"
@@ -20,7 +20,7 @@ export default function SearchDialog({ open, onClose }: Props) {
                             autoFocus
                         />
                     </Box>
-                    <Box p={4} color="gray.400" fontSize="sm">
+                    <Box p={4} fontSize="sm">
                         No recent searches
                     </Box>
                 </Dialog.Content>

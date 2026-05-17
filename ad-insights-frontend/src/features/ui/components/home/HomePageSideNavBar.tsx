@@ -6,7 +6,7 @@ import { IoEarth } from "react-icons/io5";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoSettingsOutline, IoLogInOutline } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
-import LogoText from "@/components/LogoText.tsx";
+import LogoText from "../../../../shared/components/LogoText.tsx";
 import SideBarNavItem from "./SideBarNavItem";
 import SearchDialog from "./SearchDialog";
 import {useState} from "react";
@@ -51,7 +51,6 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
                     cursor="pointer"
                     borderRadius="md"
                     p={1}
-                    _hover={{ bg: "gray.100" }}
                     transition="background 0.15s ease"
                 />
             </HStack>

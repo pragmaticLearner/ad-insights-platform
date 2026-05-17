@@ -24,7 +24,6 @@ export default function SideBarNavItem({ icon, label, isCollapsed, menuItems, on
             p={2}
             cursor="pointer"
             borderRadius="md"
-            _hover={{ bg: "gray.100" }}
             css={{
                 "&:hover .kebab-btn": { opacity: 100 }
             }}
@@ -50,11 +49,9 @@ export default function SideBarNavItem({ icon, label, isCollapsed, menuItems, on
                             </Menu.Trigger>
                             <Menu.Positioner>
                                 <Menu.Content
-                                    bg="white"
                                     boxShadow="md"
                                     borderRadius="md"
                                     border="1px solid"
-                                    borderColor="gray.200"
                                 >
                                     {menuItems.map((item) => (
                                         <Menu.Item

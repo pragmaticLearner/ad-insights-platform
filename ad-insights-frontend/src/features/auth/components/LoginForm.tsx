@@ -47,7 +47,7 @@ export default function LoginForm(): JSX.Element {
             <VStack gap={6} align="flex-start" maxW="sm">
 
                 {errors.root && (
-                    <Text color="red.500" fontSize="sm" fontWeight={"bold"}>
+                    <Text fontSize="sm" fontWeight={"bold"}>
                         Incorrect email or password
                     </Text>
                 )}

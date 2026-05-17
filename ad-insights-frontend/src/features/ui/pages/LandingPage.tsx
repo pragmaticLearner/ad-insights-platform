@@ -1,4 +1,4 @@
-import LandingPageNavBar from "../../../components/LandingPageNavBar.tsx";
+import LandingPageNavBar from "../components/landing/LandingPageNavBar.tsx";
 import {Box} from "@chakra-ui/react";
 
 export default function LandingPage() {
@@ -8,7 +8,6 @@ export default function LandingPage() {
             <Box
                 position="relative"
                 bgSize={"sm"}
-                bg={"brand.primary"}
             >
             </Box>
         </>

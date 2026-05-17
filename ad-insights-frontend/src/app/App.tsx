@@ -1,9 +1,9 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AuthenticationPage from '../features/auth/pages/AuthenticationPage.tsx';
 import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage.tsx";
-import LandingPage from "@/features/auth/pages/LandingPage.tsx";
-import AboutPage from "@/features/auth/pages/AboutPage.tsx";
-import PricingPage from "@/features/auth/pages/PricingPage.tsx";
+import LandingPage from "../features/ui/pages/LandingPage.tsx";
+import AboutPage from "../features/ui/pages/AboutPage.tsx";
+import PricingPage from "../features/ui/pages/PricingPage.tsx";
 import LoginForm from "@/features/auth/components/LoginForm.tsx";
 import SignUpForm from "@/features/auth/components/SignUpForm.tsx";
 import HomePage from "../features/ui/pages/HomePage.tsx";
@@ -11,7 +11,7 @@ import { Box } from "@chakra-ui/react";
 
 function App() {
     return (
-        <Box bg="bg.subtle" color="fg" minH="100vh">
+        <Box minH="100vh">
             <BrowserRouter>
                 <Routes>
                     <Route path={import.meta.env.VITE_LANDING_URL} element={<LandingPage/>} />

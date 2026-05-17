@@ -5,7 +5,6 @@ export default function AboutPage() {
         <Box
             position="relative"
             bgSize={"sm"}
-            bg={"brand.primary"}
         >
         </Box>
     );
