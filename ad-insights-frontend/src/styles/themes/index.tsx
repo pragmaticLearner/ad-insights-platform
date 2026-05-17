@@ -20,6 +20,7 @@ const config = defineConfig({
                     textMuted: { value: "#94A3B8" },
 
                     // Borders
+                    borderSide: { value: "gray.200" },
                     borderSubtle: { value: "#E2E8F0" },
                     borderStrong: { value: "#CBD5E1" },
                 },
@@ -68,18 +69,19 @@ const config = defineConfig({
                 value: {
                     fontSize: "xl",
                     fontWeight: "semibold",
+                    color: "fg.default",
                 },
             },
             subtitle: {
                 value: {
                     fontSize: "sm",
-                    color: "text.secondary",
+                    color: "fg.muted",
                 },
             },
             text: {
                 value: {
                     fontSize: "sm",
-                    color: "text.primary",
+                    color: "#64748B",
                 },
             },
         },

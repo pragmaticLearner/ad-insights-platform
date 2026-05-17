@@ -1,7 +1,12 @@
+import {Box} from "@chakra-ui/react";
+
 export default function AboutPage() {
     return (
-        <div>
-            <h1 className={"text-center"}>About Page</h1>
-        </div>
+        <Box
+            position="relative"
+            bgSize={"sm"}
+            bg={"brand.primary"}
+        >
+        </Box>
     );
 }

@@ -8,6 +8,7 @@ export default function LandingPage() {
             <Box
                 position="relative"
                 bgSize={"sm"}
+                bg={"brand.primary"}
             >
             </Box>
         </>

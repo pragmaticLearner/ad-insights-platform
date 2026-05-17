@@ -1,6 +1,7 @@
-import { Flex, Box } from "@chakra-ui/react";
+import {Flex, Box, HStack} from "@chakra-ui/react";
 import { useState } from "react";
 import HomePageSideNavBar from "../components/home/HomePageSideNavBar.tsx";
+import LightDarkModeController from "@/components/LightDarkModeController.tsx";
 
 type SidebarMode = "full" | "collapsed";
 
@@ -14,9 +15,8 @@ export default function HomePage() {
             <Box
                 w={isCollapsed ? "4rem" : "18rem"}
                 flexShrink={0}
-                bg="brand.sidebar"
                 borderRight="1px solid"
-                borderColor="gray.200"
+                borderColor="gray.300"
                 transition="width 0.2s ease"
                 overflow="hidden"
             >
@@ -31,7 +31,13 @@ export default function HomePage() {
                 bg="brand.primary"
                 padding={5}
             >
-                Main
+                <HStack
+                    justify="space-between"
+                    w="full"
+                >
+                    <p>Main</p>
+                    <LightDarkModeController/>
+                </HStack>
             </Box>
         </Flex>
     );

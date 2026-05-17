@@ -6,6 +6,7 @@ export default function LogoText() {
     return (
         <Text
             fontSize="md"
+            color="fg.default"
             fontWeight={600}
             onClick={() => navigate(import.meta.env.VITE_HOME_URL)}
             cursor="pointer"

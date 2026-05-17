@@ -1,7 +1,12 @@
+import {Box} from "@chakra-ui/react";
+
 export default function PricingPage() {
     return (
-        <div>
-            <h1 className={"text-center"}>Pricing Page</h1>
-        </div>
+        <Box
+            position="relative"
+            bgSize={"sm"}
+        >
+            Pricing
+        </Box>
     );
 }
