@@ -1,9 +1,7 @@
-import {Box, Image} from "@chakra-ui/react";
+import {Image} from "@chakra-ui/react";
 
-export default function Site() {
+export default function SiteLogo() {
     return (
-        <Box>
-            <Image src={""} alt="Logo" height="200px" mx="auto" />
-        </Box>
+        <Image src={""} alt="Logo" height="200px" mx="auto" />
     );
 }
