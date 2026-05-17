@@ -12,9 +12,10 @@ interface NavItemProps {
     label: string;
     isCollapsed: boolean;
     menuItems?: MenuItemType[];
+    onClick?: () => void;
 }
 
-export default function SideBarNavItem({ icon, label, isCollapsed, menuItems }: NavItemProps) {
+export default function SideBarNavItem({ icon, label, isCollapsed, menuItems, onClick }: NavItemProps) {
     return (
         <Flex
             align="center"
@@ -27,6 +28,7 @@ export default function SideBarNavItem({ icon, label, isCollapsed, menuItems }: 
             css={{
                 "&:hover .kebab-btn": { opacity: 100 }
             }}
+            onClick={onClick}
         >
             <Icon as={icon} boxSize={5} />
             {!isCollapsed && (

@@ -2,13 +2,17 @@ import { Flex, HStack, Icon } from "@chakra-ui/react";
 import { IoMdSearch, IoMdPerson } from "react-icons/io";
 import { PiSidebarSimpleThin } from "react-icons/pi";
 import { IoIosBookmark } from "react-icons/io";
+import { IoEarth } from "react-icons/io5";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoSettingsOutline, IoLogInOutline } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
 import LogoText from "@/components/LogoText.tsx";
 import SideBarNavItem from "./SideBarNavItem";
+import SearchDialog from "./SearchDialog";
+import {useState} from "react";
 
 const mainNavItems = [
+    { icon: IoEarth, label: "Map" },
     { icon: IoMdSearch, label: "Search" },
     { icon: IoIosBookmark, label: "Favourites" },
     { icon: MdDashboard, label: "Dashboard" },
@@ -32,6 +36,7 @@ interface Props {
 }
 
 export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
+    const [searchOpen, setSearchOpen] = useState(false);
     const navProps = { isCollapsed };
 
     return (
@@ -53,7 +58,12 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
 
             <Flex direction="column" flex={1} mt={4}>
                 {mainNavItems.map((item) => (
-                    <SideBarNavItem key={item.label} {...item} {...navProps} />
+                    <SideBarNavItem
+                        key={item.label}
+                        {...item}
+                        {...navProps}
+                        onClick={item.label === "Search" ? () => setSearchOpen(true) : undefined}
+                    />
                 ))}
             </Flex>
 
@@ -62,6 +72,8 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
                     <SideBarNavItem key={item.label} {...item} {...navProps} />
                 ))}
             </Flex>
+
+            <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
 
         </Flex>
     );
