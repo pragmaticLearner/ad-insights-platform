@@ -52,6 +52,7 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
                     borderRadius="md"
                     p={1}
                     transition="background 0.15s ease"
+                    color={"text.primary"}
                 />
             </HStack>
 
