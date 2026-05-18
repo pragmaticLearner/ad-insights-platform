@@ -28,7 +28,7 @@ const config = defineConfig({
             colors: {
                 // Surfaces
                 "surface.primary": {
-                    value: { _light: "{colors.brand.primary}", _dark: "#0F172A" }
+                    value: { _light: "{colors.brand.primary}", _dark: "#2C2E35" }
                 },
                 "surface.secondary": {
                     value: { _light: "{colors.brand.secondary}", _dark: "#1E293B" }
