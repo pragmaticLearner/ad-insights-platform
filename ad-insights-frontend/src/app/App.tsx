@@ -11,7 +11,7 @@ import { Box } from "@chakra-ui/react";
 
 function App() {
     return (
-        <Box minH="100vh">
+        <Box minH="100vh" bg={"brand.primary"}>
             <BrowserRouter>
                 <Routes>
                     <Route path={import.meta.env.VITE_LANDING_URL} element={<LandingPage/>} />
