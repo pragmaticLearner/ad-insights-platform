@@ -16,7 +16,7 @@ export default function HomePage() {
                 w={isCollapsed ? "4rem" : "18rem"}
                 flexShrink={0}
                 borderRight="1px solid"
-                borderColor={"brand.borderStrong"}
+                borderColor={"border.strong"}
                 transition="width 0.2s ease"
                 overflow="hidden"
             >
@@ -29,7 +29,7 @@ export default function HomePage() {
             <Box
                 flex={1}
                 padding={5}
-                bg={"brand.primary"}
+                bg={"surface.sidebar"}
             >
                 <HStack
                     justify="space-between"

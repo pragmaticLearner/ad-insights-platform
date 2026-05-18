@@ -5,7 +5,7 @@ export default function LogoText() {
     const navigate = useNavigate();
     return (
         <Text
-            color={"brand.textPrimary"}
+            color={"text.primary"}
             fontSize="md"
             fontWeight={600}
             onClick={() => navigate(import.meta.env.VITE_HOME_URL)}

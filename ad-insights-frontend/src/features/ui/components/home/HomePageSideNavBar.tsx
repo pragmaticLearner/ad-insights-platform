@@ -40,7 +40,7 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
     const navProps = { isCollapsed };
 
     return (
-        <Flex direction="column" h="100%" p={2} bg={"brand.secondary"}>
+        <Flex direction="column" h="100%" p={2} bg={"surface.secondary"}>
 
             <HStack justifyContent={isCollapsed ? "center" : "space-between"} align="center">
                 {!isCollapsed && <LogoText />}
@@ -55,7 +55,7 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
                 />
             </HStack>
 
-            <Flex direction="column" flex={1} mt={4} color={"brand.textPrimary"}>
+            <Flex direction="column" flex={1} mt={4} color={"text.primary"}>
                 {mainNavItems.map((item) => (
                     <SideBarNavItem
                         key={item.label}
@@ -66,7 +66,7 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
                 ))}
             </Flex>
 
-            <Flex direction="column" mt="auto" color={"brand.textPrimary"}>
+            <Flex direction="column" mt="auto" color={"text.primary"}>
                 {bottomNavItems.map((item) => (
                     <SideBarNavItem key={item.label} {...item} {...navProps} />
                 ))}

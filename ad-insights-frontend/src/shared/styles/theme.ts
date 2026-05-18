@@ -1,6 +1,10 @@
 import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 
 const config = defineConfig({
+    conditions: {
+        dark: "[data-theme=dark] &, .dark &",
+        light: "[data-theme=light] &, .light &",
+    },
     strictTokens: false,
     theme: {
         tokens: {
@@ -23,11 +27,11 @@ const config = defineConfig({
         semanticTokens: {
             colors: {
                 // Surfaces
-                "surface.sidebar": {
-                    value: { _light: "{colors.brand.secondary}", _dark: "#1E293B" }
-                },
                 "surface.primary": {
                     value: { _light: "{colors.brand.primary}", _dark: "#0F172A" }
+                },
+                "surface.secondary": {
+                    value: { _light: "{colors.brand.secondary}", _dark: "#1E293B" }
                 },
 
                 // Text

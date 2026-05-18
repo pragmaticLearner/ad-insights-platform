@@ -8,10 +8,18 @@ import LoginForm from "@/features/auth/components/LoginForm.tsx";
 import SignUpForm from "@/features/auth/components/SignUpForm.tsx";
 import HomePage from "../features/ui/pages/HomePage.tsx";
 import { Box } from "@chakra-ui/react";
+import {useTheme} from "next-themes";
+import {useEffect} from "react";
 
 function App() {
+    const { resolvedTheme } = useTheme();
+
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", resolvedTheme ?? "light");
+    }, [resolvedTheme]);
+
     return (
-        <Box minH="100vh" bg={"brand.primary"}>
+        <Box minH="100vh" bg="surface.primary">
             <BrowserRouter>
                 <Routes>
                     <Route path={import.meta.env.VITE_LANDING_URL} element={<LandingPage/>} />
