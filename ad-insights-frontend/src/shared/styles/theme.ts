@@ -20,6 +20,7 @@ const config = defineConfig({
                     textMuted: { value: "#94A3B8" },
 
                     // Borders
+                    borderSubtle: { value: "#E2E8F0" },
                     borderStrong: { value: "#aeb6c1" },
                 },
             },
@@ -46,6 +47,9 @@ const config = defineConfig({
                 },
 
                 // Borders
+                "border.subtle": {
+                    value: { _light: "{colors.brand.borderSubtle}", _dark: "#334155" }
+                },
                 "border.strong": {
                     value: { _light: "{colors.brand.borderStrong}", _dark: "#475569" }
                 },

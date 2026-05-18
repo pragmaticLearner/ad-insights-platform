@@ -11,7 +11,7 @@ export default function SearchDialog({ open, onClose }: Props) {
             <Dialog.Backdrop />
             <Dialog.Positioner>
                 <Dialog.Content maxW="600px" mt="20vh">
-                    <Box p={3} borderBottom="1px solid" >
+                    <Box p={3} borderBottom="1px solid" borderColor={"border.subtle"}>
                         <Input
                             placeholder="Search..."
                             border="none"
