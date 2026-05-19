@@ -39,7 +39,7 @@ export default function SideBarNavItem({ icon, label, isCollapsed, menuItems, on
                 <>
                     <span style={{ flex: 1 }}>{label}</span>
                     {menuItems && (
-                        <Menu.Root id={`menu-${label}`}>
+                        <Menu.Root>
                             <Menu.Trigger asChild>
                                 <IconButton
                                     className="kebab-btn"
