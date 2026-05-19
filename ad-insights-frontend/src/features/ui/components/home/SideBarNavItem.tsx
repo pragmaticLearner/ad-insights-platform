@@ -24,6 +24,11 @@ export default function SideBarNavItem({ icon, label, isCollapsed, menuItems, on
             p={2}
             cursor="pointer"
             borderRadius="md"
+            transition="all 0.15s ease"
+            _hover={{
+                bg: "bg.subtle",
+                transform: "translateX(3px)",
+            }}
             css={{
                 "&:hover .kebab-btn": { opacity: 100 }
             }}
@@ -34,7 +39,7 @@ export default function SideBarNavItem({ icon, label, isCollapsed, menuItems, on
                 <>
                     <span style={{ flex: 1 }}>{label}</span>
                     {menuItems && (
-                        <Menu.Root>
+                        <Menu.Root id={`menu-${label}`}>
                             <Menu.Trigger asChild>
                                 <IconButton
                                     className="kebab-btn"

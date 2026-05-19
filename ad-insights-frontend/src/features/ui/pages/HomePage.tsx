@@ -32,12 +32,20 @@ export default function HomePage() {
                 bg={"surface.sidebar"}
             >
                 <HStack
-                    justify="space-between"
+                    justify="right"
                     w="full"
                 >
-                    <p>Main</p>
                     <LightDarkModeController/>
                 </HStack>
+                <Box
+                    p={4}
+                    minH="90%"
+                    borderWidth="5px"
+                    borderColor="border.subtle"
+                    overflow="hidden"
+                >
+
+                </Box>
             </Box>
         </Flex>
     );
