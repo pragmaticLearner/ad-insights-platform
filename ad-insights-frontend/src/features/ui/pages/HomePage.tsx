@@ -2,6 +2,7 @@ import {Flex, Box, HStack} from "@chakra-ui/react";
 import { useState } from "react";
 import HomePageSideNavBar from "../components/home/HomePageSideNavBar.tsx";
 import LightDarkModeController from "../../../shared/components/LightDarkModeController.tsx";
+import WorldMap from "@/features/map/WorldMap.tsx";
 
 type SidebarMode = "full" | "collapsed";
 
@@ -44,7 +45,7 @@ export default function HomePage() {
                     borderColor="border.subtle"
                     overflow="hidden"
                 >
-
+                    <WorldMap/>
                 </Box>
             </Box>
         </Flex>
