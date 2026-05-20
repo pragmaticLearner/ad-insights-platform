@@ -5,7 +5,7 @@ import { feature } from "topojson-client";
 import type {Topology} from "topojson-specification";
 
 const worldMapJson = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-// "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"
+// "https://d3js.org/world-110m.v1.json"
 
 export default function WorldMap() {
     const [countries, setCountries] = useState<Feature<Geometry>[]>([]);
