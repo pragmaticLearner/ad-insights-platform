@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import * as d3 from "d3-geo";
 import type {Feature, FeatureCollection, Geometry} from "geojson";
 import { feature } from "topojson-client";
@@ -11,7 +11,7 @@ export default function WorldMap() {
     const [countries, setCountries] = useState<Feature<Geometry>[]>([]);
     const [hovered, setHovered] = useState(null);
 
-    const projection = d3.geoNaturalEarth1().scale(300).translate([800, 500]);
+    const projection = d3.geoNaturalEarth1().scale(300).translate([750, 500]);
     const pathGenerator = d3.geoPath().projection(projection);
 
     useEffect(() => {
