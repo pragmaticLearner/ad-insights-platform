@@ -38,15 +38,7 @@ export default function HomePage() {
                 >
                     <LightDarkModeController/>
                 </HStack>
-                <Box
-                    p={4}
-                    minH="90%"
-                    borderWidth="5px"
-                    borderColor="border.subtle"
-                    overflow="hidden"
-                >
-                    <WorldMap/>
-                </Box>
+                <WorldMap/>
             </Box>
         </Flex>
     );
