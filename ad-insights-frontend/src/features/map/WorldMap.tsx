@@ -1,27 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as d3 from "d3-geo";
-import type {Feature, FeatureCollection, Geometry} from "geojson";
+import type {FeatureCollection, Geometry, GeometryCollection} from "geojson";
 import { feature } from "topojson-client";
 import type {Topology} from "topojson-specification";
+import worldMapJson from "../../shared/assets/maps/world-map-json-50m.json";
 
-const worldMapJson = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-// "https://d3js.org/world-110m.v1.json" - in case other map does not work
 
 export default function WorldMap() {
-    const [countries, setCountries] = useState<Feature<Geometry>[]>([]);
     const [hovered, setHovered] = useState(null);
 
     const projection = d3.geoNaturalEarth1().scale(300).translate([750, 550]);
     const pathGenerator = d3.geoPath().projection(projection);
 
-    useEffect(() => {
-        fetch(worldMapJson)
-            .then(r => r.json())
-            .then((topo: Topology) => {
-                const world = feature(topo, topo.objects.countries) as FeatureCollection<Geometry>;
-                setCountries(world.features);
-            });
-    }, []);
+    const topo = worldMapJson as unknown as Topology<{ countries: GeometryCollection<any> }>;
+    const world = feature(topo, topo.objects.countries) as unknown as FeatureCollection<Geometry>;
+
+    const countries = world.features;
 
     const sortedCountries = hovered !== null
         ? [
