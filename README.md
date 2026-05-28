@@ -9,7 +9,7 @@ PostgreSQL for the database and docker for containerization.
 
 Feature based architecture with parts of a shared layer for reusable components.
 
-Building with Chakra UI.
+Building with Chakra UI and D3 for graph visualization.
 
 -------------------------------------------------------------------------------------------------
 ## Backend - Spring Boot + PostgreSQL
@@ -18,7 +18,7 @@ Building with Chakra UI.
 
 Utilizing multi layered architecture with Spring boot project. 
 
-Following typical Spring boot format in order to organize and structure code concisely
+Following recommended architecture for Spring boot to organize and structure code concisely
 
 #### Components
 
