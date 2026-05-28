@@ -12,11 +12,10 @@ export default function WorldMap() {
     const projection = d3.geoNaturalEarth1().scale(300).translate([750, 550]);
     const pathGenerator = d3.geoPath().projection(projection);
 
-    const topo = worldMapJson as unknown as Topology<{ countries: GeometryCollection<any> }>;
+    const topo = worldMapJson as unknown as Topology<{ countries: GeometryCollection<never> }>;
     const world = feature(topo, topo.objects.countries) as unknown as FeatureCollection<Geometry>;
 
     const countries = world.features;
-
     const sortedCountries = hovered !== null
         ? [
             ...countries.filter((_, i) => i !== hovered),
