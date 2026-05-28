@@ -2,7 +2,7 @@ import {Flex, Box, HStack} from "@chakra-ui/react";
 import { useState } from "react";
 import HomePageSideNavBar from "./components/HomePageSideNavBar.tsx";
 import LightDarkModeController from "../shared/components/LightDarkModeController.tsx";
-import WorldMap from "@/features/map/WorldMap.tsx";
+import WorldMap from "@/features/map/components/WorldMap.tsx";
 
 type SidebarMode = "full" | "collapsed";
 

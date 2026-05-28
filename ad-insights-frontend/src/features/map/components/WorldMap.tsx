@@ -3,7 +3,7 @@ import * as d3 from "d3-geo";
 import type {FeatureCollection, Geometry, GeometryCollection} from "geojson";
 import { feature } from "topojson-client";
 import type {Topology} from "topojson-specification";
-import worldMapJson from "../../shared/assets/maps/world-map-json-50m.json";
+import worldMapJson from "../../../shared/assets/maps/world-map-json-50m.json";
 
 
 export default function WorldMap() {
