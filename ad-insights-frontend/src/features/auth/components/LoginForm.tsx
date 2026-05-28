@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import RememberMeCheckbox from "@/features/auth/components/RememberMeCheckbox.tsx";
 import ForgotPasswordLink from "@/features/auth/components/ForgotPasswordLink.tsx";
 import {type JSX, useState} from "react";
-import type {LoginRequest} from "./utils/LoginRequest.tsx";
+import type {LoginRequest} from "../types.ts";
 import {useNavigate} from "react-router";
-import {login} from "@/features/auth/services/authApi.ts";
+import {login} from "@/features/auth/api/authApi.ts";
 
 export default function LoginForm(): JSX.Element {
     const {

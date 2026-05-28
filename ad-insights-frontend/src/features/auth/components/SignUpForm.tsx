@@ -1,8 +1,8 @@
 import {Button, Field, Input, VStack} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
-import type {SignUpRequest} from "./utils/LoginRequest.tsx";
+import type {SignUpRequest} from "../types.ts";
 import {useNavigate} from "react-router";
-import {signup} from "@/features/auth/services/authApi.ts";
+import {signup} from "@/features/auth/api/authApi.ts";
 import {PasswordInput} from "@/features/auth/components/PasswordInput.tsx";
 
 export default function SignUpForm() {

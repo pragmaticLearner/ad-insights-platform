@@ -1,7 +1,7 @@
 import {Box, Button, Card, Field, Input, VStack} from "@chakra-ui/react";
 import {useNavigate} from "react-router";
-import {forgotPassword} from "@/features/auth/services/authApi.ts";
-import type {ForgotPasswordRequest, LoginRequest} from "@/features/auth/components/utils/LoginRequest.tsx";
+import {forgotPassword} from "@/features/auth/api/authApi.ts";
+import type {ForgotPasswordRequest, LoginRequest} from "../features/auth/types.ts";
 import {useForm} from "react-hook-form";
 import {useState} from "react";
 

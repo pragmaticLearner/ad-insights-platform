@@ -1,4 +1,4 @@
-import LandingPageNavBar from "../components/landing/LandingPageNavBar.tsx";
+import LandingPageNavBar from "./components/LandingPageNavBar.tsx";
 import {Box} from "@chakra-ui/react";
 
 export default function LandingPage() {

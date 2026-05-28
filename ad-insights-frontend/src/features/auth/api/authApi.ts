@@ -1,5 +1,5 @@
-import { api } from "@/lib/api";
-import type {ForgotPasswordRequest, LoginRequest, SignUpRequest} from "../components/utils/LoginRequest.tsx";
+import { api } from "@/shared/api/api.ts";
+import type {ForgotPasswordRequest, LoginRequest, SignUpRequest} from "../types.ts";
 
 export const login = async (request: LoginRequest) => {
     const response = await api.post(

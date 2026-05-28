@@ -1,5 +1,5 @@
 import {Text, Heading, Tabs, Box, VStack} from "@chakra-ui/react";
-import SiteLogo from "../../../shared/components/SiteLogo.tsx"
+import SiteLogo from "../shared/components/SiteLogo.tsx"
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 
 export default function AuthenticationPage() {

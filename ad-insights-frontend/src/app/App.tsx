@@ -1,12 +1,12 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import AuthenticationPage from '../features/auth/pages/AuthenticationPage.tsx';
-import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage.tsx";
-import LandingPage from "../features/ui/pages/LandingPage.tsx";
-import AboutPage from "../features/ui/pages/AboutPage.tsx";
-import PricingPage from "../features/ui/pages/PricingPage.tsx";
+import AuthenticationPage from '../pages/AuthenticationPage.tsx';
+import ForgotPasswordPage from "@/pages/ForgotPasswordPage.tsx";
+import LandingPage from "@/pages/LandingPage.tsx";
+import AboutPage from "@/pages/AboutPage.tsx";
+import PricingPage from "@/pages/PricingPage.tsx";
 import LoginForm from "@/features/auth/components/LoginForm.tsx";
 import SignUpForm from "@/features/auth/components/SignUpForm.tsx";
-import HomePage from "../features/ui/pages/HomePage.tsx";
+import HomePage from "@/pages/HomePage.tsx";
 import { Box } from "@chakra-ui/react";
 import {useTheme} from "next-themes";
 import {useEffect} from "react";

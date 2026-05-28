@@ -6,9 +6,9 @@ import { IoEarth } from "react-icons/io5";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoSettingsOutline, IoLogInOutline } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
-import LogoText from "../../../../shared/components/LogoText.tsx";
-import SideBarNavItem from "./SideBarNavItem";
-import SearchDialog from "./SearchDialog";
+import LogoText from "../../shared/components/LogoText.tsx";
+import SideBarNavItem from "./SideBarNavItem.tsx";
+import SearchDialog from "./SearchDialog.tsx";
 import {useState} from "react";
 
 const mainNavItems = [
@@ -40,7 +40,14 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
     const navProps = { isCollapsed };
 
     return (
-        <Flex direction="column" h="100%" p={2} bg={"surface.secondary"}>
+        <Flex
+            direction="column"
+            h="100%"
+            p={2}
+            bg={"surface.secondary"}
+            transition="width 0.25s ease"
+            overflow="hidden"
+        >
 
             <HStack justifyContent={isCollapsed ? "center" : "space-between"} align="center">
                 {!isCollapsed && <LogoText />}
