@@ -1,6 +1,6 @@
 # Ad insights platform
 
-Project to create ad insights for particular user needs. Built with Spring boot 3 + React with Vite,
+Ongoing full stack project to create ad insights for particular user needs. Built with Spring boot 3 + React with Vite,
 PostgreSQL for the database and docker for containerization.
 
 ## Frontend - React + Vite
