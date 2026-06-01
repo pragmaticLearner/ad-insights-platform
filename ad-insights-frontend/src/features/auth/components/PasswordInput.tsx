@@ -1,10 +1,8 @@
-import {Input, InputGroup, IconButton} from "@chakra-ui/react";
-import {useState} from "react";
-import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
+import { Input, InputGroup, IconButton } from "@chakra-ui/react";
+import { useState, forwardRef } from "react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
-
-
-export function PasswordInput(props: any) {
+export const PasswordInput = forwardRef<HTMLInputElement, any>((props, ref) => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
@@ -19,7 +17,9 @@ export function PasswordInput(props: any) {
                 </IconButton>
             }
         >
-            <Input type={showPassword ? "text" : "password"} {...props} />
+            <Input ref={ref} type={showPassword ? "text" : "password"} {...props} />
         </InputGroup>
     );
-}
+});
+
+PasswordInput.displayName = "PasswordInput";

@@ -6,6 +6,7 @@ export const login = async (request: LoginRequest) => {
         import.meta.env.VITE_LOGIN_URL,
         request
     );
+    console.log(response);
     return response.data;
 };
 

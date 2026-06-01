@@ -16,6 +16,7 @@ export default function SignUpForm() {
     const navigate = useNavigate();
 
     const onSubmit = async (request: SignUpRequest) => {
+        console.log(request);
         if (request.password !== request.confirmPassword) {
             setError("password", {
                 type: "unmatched fields",
