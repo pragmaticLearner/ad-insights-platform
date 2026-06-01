@@ -12,7 +12,7 @@ export default function HomePage() {
     const isCollapsed = sidebarMode === "collapsed";
 
     return (
-        <Flex minH="100vh" w="100%">
+        <Flex h="100vh" w="100%">
             <Box
                 w={isCollapsed ? "4rem" : "18rem"}
                 flexShrink={0}
