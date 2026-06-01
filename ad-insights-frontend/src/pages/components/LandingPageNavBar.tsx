@@ -1,6 +1,7 @@
-import {Flex, HStack, Image} from "@chakra-ui/react";
+import {Flex, HStack} from "@chakra-ui/react";
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
+import SiteLogo from "@/shared/components/SiteLogo.tsx";
 
 const links = [
     {name: "Home", to: import.meta.env.VITE_LANDING_URL},
@@ -13,8 +14,7 @@ export default function LandingPageNavBar() {
     return (
         <Flex as="nav" align="center" justify="space-between" p={4}>
             <HStack fontWeight="bold">
-                <Image
-                    src={""}
+                <SiteLogo
                     boxSize={"80px"}
                     borderRadius={"full"}
                     fit={"cover"}

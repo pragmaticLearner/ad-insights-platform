@@ -10,6 +10,7 @@ import LogoText from "../../shared/components/LogoText.tsx";
 import SideBarNavItem from "./SideBarNavItem.tsx";
 import SearchDialog from "./SearchDialog.tsx";
 import {useState} from "react";
+import SiteLogo from "@/shared/components/SiteLogo.tsx";
 
 const mainNavItems = [
     { icon: IoEarth, label: "Map" },
@@ -49,8 +50,13 @@ export default function HomePageSideNavBar({ isCollapsed, onToggle }: Props) {
             overflow="hidden"
         >
 
-            <HStack justifyContent={isCollapsed ? "center" : "space-between"} align="center">
-                {!isCollapsed && <LogoText />}
+            <HStack justifyContent={isCollapsed ? "center" : "space-between"} align="center" gap={2}>
+                {!isCollapsed && (
+                    <HStack gap={2} align={"center"}>
+                        <SiteLogo boxSize={"40px"} borderRadius={"full"} fit={"cover"} />
+                        <LogoText />
+                    </HStack>
+                )}
                 <Icon
                     onClick={onToggle}
                     as={PiSidebarSimpleThin}
