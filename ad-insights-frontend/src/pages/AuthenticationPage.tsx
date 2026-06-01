@@ -15,15 +15,15 @@ export default function AuthenticationPage() {
                 <SiteLogo />
 
                 {isSignup ? (
-                    <>
-                        <Heading textStyle="title">Welcome!</Heading>
+                    <VStack gap={1} align="center" textAlign="center">
+                        <Heading fontSize="2xl" fontWeight={"semibold"}>Welcome!</Heading>
                         <Text textStyle="subtitle">Please enter your details to sign up</Text>
-                    </>
+                    </VStack>
                 ) : (
-                    <>
-                        <Heading textStyle="title">Log in to your account</Heading>
+                    <VStack gap={1} align="center" textAlign="center">
+                        <Heading fontSize="2xl" fontWeight={"semibold"}>Login to your account</Heading>
                         <Text textStyle="subtitle">Welcome back!</Text>
-                    </>
+                    </VStack>
                 )}
 
                 <Tabs.Root
