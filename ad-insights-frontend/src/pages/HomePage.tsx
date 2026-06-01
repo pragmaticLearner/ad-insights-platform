@@ -1,4 +1,4 @@
-import {Flex, Box, HStack} from "@chakra-ui/react";
+import {Flex, Box, HStack, VStack} from "@chakra-ui/react";
 import { useState } from "react";
 import HomePageSideNavBar from "./components/HomePageSideNavBar.tsx";
 import LightDarkModeController from "../shared/components/LightDarkModeController.tsx";
@@ -27,7 +27,7 @@ export default function HomePage() {
                 />
             </Box>
 
-            <Box
+            <VStack
                 flex={1}
                 padding={5}
                 bg={"surface.sidebar"}
@@ -39,7 +39,7 @@ export default function HomePage() {
                     <LightDarkModeController/>
                 </HStack>
                 <WorldMap/>
-            </Box>
+            </VStack>
         </Flex>
     );
 }

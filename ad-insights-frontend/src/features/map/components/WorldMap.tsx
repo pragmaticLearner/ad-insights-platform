@@ -4,10 +4,12 @@ import type {FeatureCollection, Geometry, GeometryCollection} from "geojson";
 import { feature } from "topojson-client";
 import type {Topology} from "topojson-specification";
 import worldMapJson from "../../../shared/assets/maps/world-map-json-50m.json";
+import {useToken} from "@chakra-ui/react";
 
 
 export default function WorldMap() {
-    const [hovered, setHovered] = useState(null);
+    const [textColor] = useToken("colors", ["text.primary"])
+    const [hovered, setHovered] = useState<number | null>(null);
 
     const projection = d3.geoNaturalEarth1().scale(300).translate([750, 550]);
     const pathGenerator = d3.geoPath().projection(projection);
@@ -25,6 +27,16 @@ export default function WorldMap() {
 
     return (
         <svg viewBox="0 0 1600 1200" width="100%" height="100%">
+            {hovered !== null && (
+                <text
+                    x="20"
+                    y="40"
+                    style={{ fontSize: "28px", fontWeight: "bold" }}
+                    fill={textColor}
+                >
+                    {countries[hovered]?.properties?.name ?? ""}
+                </text>
+            )}
             {sortedCountries.map((country) => {
                 const originalIndex = countries.indexOf(country);
                 return (
