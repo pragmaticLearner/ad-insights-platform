@@ -10,9 +10,9 @@ export default function AuthenticationPage() {
 
     return (
         <Box w="full" maxW="400px" mx="auto" p={8}>
-            <VStack gap={6} align="stretch">
+            <VStack gap={6} align={"stretch"}>
 
-                <SiteLogo />
+                <SiteLogo boxSize={"200px"} borderRadius={"full"} fit={"cover"} />
 
                 {isSignup ? (
                     <VStack gap={1} align="center" textAlign="center">

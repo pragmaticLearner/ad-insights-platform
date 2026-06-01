@@ -14,6 +14,9 @@ export default function SiteLogo(props: Props): JSX.Element {
     return (
         <Image
             src={colorMode === "light" ? LightModeLogo : DarkModeLogo}
+            alt="Logo"
+            display="block"
+            mx="auto"
             {...props}
         />
     );
